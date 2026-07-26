@@ -38,7 +38,7 @@ export const AdmissionsJourney: React.FC<AdmissionsJourneyProps> = ({ onOpenAppl
 
   return (
     <section id="admissions-journey" className="py-24 bg-ivory-100 text-charcoal-900 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-3">

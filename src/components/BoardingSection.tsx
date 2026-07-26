@@ -27,7 +27,7 @@ export const BoardingSection: React.FC<BoardingSectionProps> = ({ onOpenApplyMod
 
   return (
     <section id="boarding" className="py-24 bg-ivory-200 text-charcoal-900 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           {/* Left Column: Visual Photography Showcase */}

@@ -24,7 +24,7 @@ export const AdmissionCTA: React.FC<AdmissionCTAProps> = ({ onOpenApplyModal }) 
       {/* Gold Radial Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 text-center relative z-10 space-y-8">
         
         {/* Eyebrow badge */}
         <motion.div

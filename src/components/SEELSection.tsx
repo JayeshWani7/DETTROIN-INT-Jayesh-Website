@@ -12,7 +12,7 @@ const iconComponents: Record<string, React.ReactNode> = {
 export const SEELSection: React.FC = () => {
   return (
     <section id="seel" className="py-24 bg-ivory-200 text-charcoal-900 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">

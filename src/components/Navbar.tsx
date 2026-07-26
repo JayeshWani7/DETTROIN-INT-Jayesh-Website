@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail, Sparkles } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail } from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
 
 interface NavbarProps {
@@ -10,6 +11,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,27 +25,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close dropdown & mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const academicsLinks = [
-    { name: 'CBSE Curriculum', href: '#academics' },
-    { name: 'Assessment & Pedagogy', href: '#academics' },
-    { name: 'Expert Faculty', href: '#academics' },
-    { name: 'AI & STEM Labs', href: '#future-ready' },
+    { name: 'CBSE Curriculum', href: '/academics' },
+    { name: 'Assessment & Pedagogy', href: '/academics' },
+    { name: 'Expert Faculty', href: '/academics' },
+    { name: 'AI & STEM Labs', href: '/academics' },
   ];
 
   const admissionsLinks = [
-    { name: 'Admission Process', href: '#admissions-journey' },
+    { name: 'Admission Process', href: '/admissions' },
     { name: 'Apply Online 2026-27', action: onOpenApplyModal },
-    { name: 'Fee Structure & Policy', href: '#faq' },
+    { name: 'Fee Structure & Policy', href: '/admissions' },
     { name: 'Enquiry & Prospectus', action: onOpenApplyModal },
-    { name: 'Frequently Asked Questions', href: '#faq' },
+    { name: 'Frequently Asked Questions', href: '/admissions' },
   ];
+
+  const isHome = location.pathname === '/';
 
   return (
     <>
       {/* Combined Fixed Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          isScrolled || !isHome
             ? 'glass-header shadow-editorial py-3 border-b border-forest-800/10'
             : 'bg-gradient-to-b from-forest-950/95 via-forest-950/80 to-transparent py-0 text-white'
         }`}
@@ -54,7 +65,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             isScrolled ? 'hidden' : 'block bg-forest-950/90 text-ivory-100'
           }`}
         >
-          <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="max-w-[1600px] w-full mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="flex items-center space-x-6">
               <span className="flex items-center gap-2 font-medium text-ivory-100">
                 <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
@@ -77,14 +88,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
           </div>
         </div>
 
-        {/* Main Navbar Bar */}
-        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isScrolled ? '' : 'py-3'}`}>
+        {/* Main Navbar Container */}
+        <div className={`max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 ${isScrolled ? '' : 'py-3'}`}>
           <div className="flex items-center justify-between">
             
-            {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
+            {/* Logo Link to Home */}
+            <Link to="/" className="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif font-bold text-xl border transition-all duration-300 ${
-                isScrolled 
+                isScrolled || !isHome
                   ? 'bg-forest-900 text-gold-400 border-gold-500/40 shadow-sm' 
                   : 'bg-forest-900/90 text-gold-400 border-gold-500/40 shadow-md'
               }`}>
@@ -92,32 +103,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               </div>
               <div className="flex flex-col">
                 <span className={`font-serif tracking-tight font-bold text-xl leading-none transition-colors ${
-                  isScrolled ? 'text-forest-900' : 'text-ivory-100'
+                  isScrolled || !isHome ? 'text-forest-900' : 'text-ivory-100'
                 }`}>
                   PAVNA SCHOOL
                 </span>
                 <div className="flex items-center gap-2 mt-1">
                   <span className={`text-[10px] tracking-widest font-bold uppercase ${
-                    isScrolled ? 'text-forest-700' : 'text-gold-400'
+                    isScrolled || !isHome ? 'text-forest-700' : 'text-gold-400'
                   }`}>
                     ALIGARH • EST. 1998
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm">
-              <a
-                href="#about"
+              <Link
+                to="/"
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
-                  isScrolled 
-                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                  location.pathname === '/'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
+                }`}
+              >
+                Home
+              </Link>
+
+              <Link
+                to="/about"
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  location.pathname === '/about'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 About
-              </a>
+              </Link>
 
               {/* Academics Dropdown */}
               <div 
@@ -125,65 +151,73 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 onMouseEnter={() => setActiveDropdown('academics')}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button
+                <Link
+                  to="/academics"
                   className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
-                    isScrolled 
-                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    location.pathname.startsWith('/academics')
+                      ? 'bg-gold-500/20 text-gold-600 font-bold'
+                      : isScrolled || !isHome
+                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                       : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
-                  aria-expanded={activeDropdown === 'academics'}
                 >
                   <span>Academics</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'academics' ? 'rotate-180 text-gold-500' : ''}`} />
-                </button>
+                </Link>
 
                 {activeDropdown === 'academics' && (
                   <div className="absolute top-full left-0 mt-1 w-56 bg-ivory-100 rounded-2xl shadow-editorial-hover border border-forest-800/10 p-2 py-3 z-50 animate-fadeIn">
                     {academicsLinks.map((item, idx) => (
-                      <a
+                      <Link
                         key={idx}
-                        href={item.href}
+                        to={item.href}
                         className="block px-4 py-2.5 text-sm text-charcoal-900 hover:bg-forest-50 hover:text-forest-800 rounded-xl transition-colors font-medium"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
               </div>
 
-              <a
-                href="#beyond-academics"
+              <Link
+                to="/beyond-academics"
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
-                  isScrolled 
-                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                  location.pathname === '/beyond-academics'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Beyond Academics
-              </a>
+              </Link>
 
-              <a
-                href="#boarding"
+              <Link
+                to="/boarding"
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
-                  isScrolled 
-                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                  location.pathname === '/boarding'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Boarding
-              </a>
+              </Link>
 
-              <a
-                href="#gallery"
+              <Link
+                to="/campus"
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
-                  isScrolled 
-                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                  location.pathname === '/campus'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Campus
-              </a>
+              </Link>
 
               {/* Admissions Dropdown */}
               <div 
@@ -191,17 +225,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 onMouseEnter={() => setActiveDropdown('admissions')}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button
+                <Link
+                  to="/admissions"
                   className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
-                    isScrolled 
-                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    location.pathname.startsWith('/admissions')
+                      ? 'bg-gold-500/20 text-gold-600 font-bold'
+                      : isScrolled || !isHome
+                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                       : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
-                  aria-expanded={activeDropdown === 'admissions'}
                 >
                   <span>Admissions</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'admissions' ? 'rotate-180 text-gold-500' : ''}`} />
-                </button>
+                </Link>
 
                 {activeDropdown === 'admissions' && (
                   <div className="absolute top-full left-0 mt-1 w-64 bg-ivory-100 rounded-2xl shadow-editorial-hover border border-forest-800/10 p-2 py-3 z-50 animate-fadeIn">
@@ -216,18 +252,31 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                           <ArrowUpRight className="w-4 h-4 text-gold-600" />
                         </button>
                       ) : (
-                        <a
+                        <Link
                           key={idx}
-                          href={item.href}
+                          to={item.href}
                           className="block px-4 py-2.5 text-sm text-charcoal-900 hover:bg-forest-50 hover:text-forest-800 rounded-xl transition-colors font-medium"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       )
                     ))}
                   </div>
                 )}
               </div>
+
+              <Link
+                to="/contact"
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  location.pathname === '/contact'
+                    ? 'bg-gold-500/20 text-gold-600 font-bold'
+                    : isScrolled || !isHome
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
+                }`}
+              >
+                Contact
+              </Link>
             </nav>
 
             {/* Right Action Button */}
@@ -253,7 +302,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`p-2.5 rounded-full transition-colors focus:outline-none ${
-                  isScrolled ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
+                  isScrolled || !isHome ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
                 }`}
                 aria-label="Toggle menu"
               >
@@ -270,7 +319,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
         <div className="fixed inset-0 z-50 lg:hidden bg-forest-950 text-ivory-100 flex flex-col justify-between p-6 animate-fadeIn overflow-y-auto">
           <div>
             <div className="flex items-center justify-between border-b border-forest-800 pb-6 mb-8">
-              <div className="flex items-center gap-3">
+              <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-gold-500 text-forest-950 font-serif font-bold text-xl flex items-center justify-center">
                   P
                 </div>
@@ -278,7 +327,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                   <h2 className="font-serif font-bold text-xl leading-none text-white">PAVNA SCHOOL</h2>
                   <p className="text-[10px] text-gold-400 uppercase tracking-widest mt-1">Aligarh • Est. 1998</p>
                 </div>
-              </div>
+              </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
                 className="p-2 rounded-full bg-forest-900 text-ivory-200 focus:outline-none"
@@ -287,64 +336,64 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               </button>
             </div>
 
-            {/* Navigation links stack */}
+            {/* Mobile navigation links */}
             <nav className="space-y-4 font-serif text-2xl">
-              <a
-                href="#about"
+              <Link
+                to="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-ivory-100 hover:text-gold-400 transition-colors"
+              >
+                Home
+              </Link>
+              <Link
+                to="/about"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
                 About Pavna
-              </a>
-              <a
-                href="#academics"
+              </Link>
+              <Link
+                to="/academics"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
                 Academics & CBSE
-              </a>
-              <a
-                href="#future-ready"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                AI & Robotics Labs
-              </a>
-              <a
-                href="#seel"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                SEEL Curriculum
-              </a>
-              <a
-                href="#beyond-academics"
+              </Link>
+              <Link
+                to="/beyond-academics"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
                 Beyond Academics
-              </a>
-              <a
-                href="#boarding"
+              </Link>
+              <Link
+                to="/boarding"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
                 Residential Boarding
-              </a>
-              <a
-                href="#gallery"
+              </Link>
+              <Link
+                to="/campus"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
-                Campus Gallery
-              </a>
-              <a
-                href="#faq"
+                Campus & Facilities
+              </Link>
+              <Link
+                to="/admissions"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
-                Admissions FAQ
-              </a>
+                Admissions 2026-27
+              </Link>
+              <Link
+                to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-ivory-100 hover:text-gold-400 transition-colors"
+              >
+                Contact Us
+              </Link>
             </nav>
           </div>
 

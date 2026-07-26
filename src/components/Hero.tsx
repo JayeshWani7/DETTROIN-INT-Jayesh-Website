@@ -28,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenApplyModal }) => {
       <div className="absolute top-1/4 right-10 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none" />
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
+      <div className="relative z-10 max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Left Column: Typography & CTAs */}

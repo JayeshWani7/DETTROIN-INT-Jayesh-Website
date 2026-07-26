@@ -12,7 +12,7 @@ export const BeyondAcademics: React.FC = () => {
       {/* Background subtle elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-forest-800/30 rounded-full filter blur-3xl pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
         {/* Header */}
         <div className="max-w-3xl mb-16 space-y-3">
