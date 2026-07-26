@@ -14,6 +14,9 @@ import { AiRoboticsPage } from './pages/academics/AiRoboticsPage';
 import { BeyondAcademicsPage } from './pages/BeyondAcademicsPage';
 import { BoardingPage } from './pages/BoardingPage';
 import { CampusPage } from './pages/CampusPage';
+import { InfrastructurePage } from './pages/InfrastructurePage';
+import { CbseDisclosurePage } from './pages/CbseDisclosurePage';
+import { NewsEventsPage } from './pages/NewsEventsPage';
 import { AdmissionsPage } from './pages/AdmissionsPage';
 import { ProcessPage } from './pages/admissions/ProcessPage';
 import { FeesPage } from './pages/admissions/FeesPage';
@@ -53,7 +56,12 @@ export const App: React.FC = () => {
             
             <Route path="/beyond-academics" element={<BeyondAcademicsPage onOpenApplyModal={handleOpenApplyModal} />} />
             <Route path="/boarding" element={<BoardingPage onOpenApplyModal={handleOpenApplyModal} />} />
+            
+            {/* Campus & Infrastructure */}
             <Route path="/campus" element={<CampusPage onOpenApplyModal={handleOpenApplyModal} />} />
+            <Route path="/infrastructure" element={<InfrastructurePage onOpenApplyModal={handleOpenApplyModal} />} />
+            <Route path="/cbse-disclosure" element={<CbseDisclosurePage onOpenApplyModal={handleOpenApplyModal} />} />
+            <Route path="/news-events" element={<NewsEventsPage onOpenApplyModal={handleOpenApplyModal} />} />
             
             {/* Admissions & Sub-Pages */}
             <Route path="/admissions" element={<AdmissionsPage onOpenApplyModal={handleOpenApplyModal} />} />

@@ -39,11 +39,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
     { name: 'AI & STEM Labs', href: '/academics/ai-robotics' },
   ];
 
+  const campusLinks = [
+    { name: 'Infrastructure & Facilities', href: '/infrastructure' },
+    { name: 'Campus Photo Gallery', href: '/campus' },
+    { name: 'News & Campus Events', href: '/news-events' },
+  ];
+
   const admissionsLinks = [
     { name: 'Admission Process', href: '/admissions/process' },
     { name: 'Apply Online 2026-27', action: onOpenApplyModal },
     { name: 'Fee Structure & Policy', href: '/admissions/fees' },
-    { name: 'Enquiry & Prospectus', action: onOpenApplyModal },
+    { name: 'CBSE Disclosure', href: '/cbse-disclosure' },
     { name: 'Frequently Asked Questions', href: '/admissions/faq' },
   ];
 
@@ -204,18 +210,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 Boarding
               </Link>
 
-              <Link
-                to="/campus"
-                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
-                  location.pathname === '/campus'
-                    ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled
-                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
-                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
-                }`}
+              {/* Campus Dropdown */}
+              <div 
+                className="relative"
+                onMouseEnter={() => setActiveDropdown('campus')}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                Campus
-              </Link>
+                <Link
+                  to="/campus"
+                  className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
+                    location.pathname.startsWith('/campus') || location.pathname === '/infrastructure'
+                      ? 'bg-gold-500/20 text-gold-600 font-bold'
+                      : isScrolled
+                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
+                      : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
+                  }`}
+                >
+                  <span>Campus</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'campus' ? 'rotate-180 text-gold-500' : ''}`} />
+                </Link>
+
+                {activeDropdown === 'campus' && (
+                  <div className="absolute top-full left-0 mt-1 w-64 bg-ivory-100 rounded-2xl shadow-editorial-hover border border-forest-800/10 p-2 py-3 z-50 animate-fadeIn">
+                    {campusLinks.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        to={item.href}
+                        className="block px-4 py-2.5 text-sm text-charcoal-900 hover:bg-forest-50 hover:text-forest-800 rounded-xl transition-colors font-medium"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Admissions Dropdown */}
               <div 
@@ -226,7 +254,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 <Link
                   to="/admissions"
                   className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
-                    location.pathname.startsWith('/admissions')
+                    location.pathname.startsWith('/admissions') || location.pathname === '/cbse-disclosure'
                       ? 'bg-gold-500/20 text-gold-600 font-bold'
                       : isScrolled
                       ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
@@ -376,7 +404,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 onClick={() => setMobileMenuOpen(false)}
                 className="block text-ivory-100 hover:text-gold-400 transition-colors"
               >
-                Campus & Facilities
+                Campus & Gallery
+              </Link>
+              <Link
+                to="/infrastructure"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-ivory-100 hover:text-gold-400 transition-colors"
+              >
+                Infrastructure & Labs
+              </Link>
+              <Link
+                to="/cbse-disclosure"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block text-ivory-100 hover:text-gold-400 transition-colors"
+              >
+                CBSE Disclosure
               </Link>
               <Link
                 to="/admissions"
