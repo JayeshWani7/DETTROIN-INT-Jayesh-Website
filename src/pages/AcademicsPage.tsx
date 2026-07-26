@@ -13,9 +13,9 @@ export const AcademicsPage: React.FC<AcademicsPageProps> = ({ onOpenApplyModal }
   return (
     <div className="w-full">
       <PageHeader
-        badge="ACADEMICS & CURRICULUM"
-        title="Academic Rigor Meets Inquiry & Technology."
-        subtitle="Pavna School delivers an enriched CBSE curriculum integrated with Social, Emotional & Ethical Learning (SEEL) and hands-on AI & Robotics STEM laboratories."
+        badge="CBSE CURRICULUM & INNOVATION"
+        title="Empowering Minds for a Changing World."
+        subtitle="Pavna School delivers a concept-driven CBSE curriculum integrated with Social, Emotional & Ethical Learning (SEEL) and hands-on AI & Robotics STEM laboratories."
         backgroundImageUrl="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80"
         breadcrumbs={[{ label: 'Academics' }]}
       />

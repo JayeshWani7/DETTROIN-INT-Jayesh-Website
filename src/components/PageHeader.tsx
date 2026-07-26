@@ -19,7 +19,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   breadcrumbs
 }) => {
   return (
-    <section className="relative w-full bg-forest-950 text-ivory-100 overflow-hidden pt-36 pb-20 lg:pt-44 lg:pb-24 border-b border-gold-500/20">
+    <section className="relative w-full bg-forest-950 text-ivory-100 overflow-hidden pt-28 sm:pt-36 lg:pt-44 pb-16 lg:pb-24 border-b border-gold-500/20">
       {/* Background Image with Dark Emerald Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -37,7 +37,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 space-y-6">
         
         {/* Breadcrumb Navigation */}
-        <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-forest-300">
+        <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-wider text-forest-300">
           <Link to="/" className="hover:text-gold-400 transition-colors">Home</Link>
           {breadcrumbs.map((b, idx) => (
             <React.Fragment key={idx}>
@@ -57,9 +57,9 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest-900/90 border border-gold-500/30 text-gold-400 text-xs font-bold tracking-widest uppercase backdrop-blur-md"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-forest-900/90 border border-gold-500/30 text-gold-400 text-[11px] sm:text-xs font-bold tracking-widest uppercase backdrop-blur-md"
           >
-            <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+            <Sparkles className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
             <span>{badge}</span>
           </motion.div>
 
@@ -67,7 +67,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-hero font-serif font-normal tracking-tight text-ivory-100"
+            className="text-3xl sm:text-5xl lg:text-6xl font-serif font-normal tracking-tight text-ivory-100 leading-tight"
           >
             {title}
           </motion.h1>
@@ -76,7 +76,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-forest-200 text-base sm:text-xl font-light leading-relaxed max-w-3xl"
+            className="text-forest-200 text-sm sm:text-lg lg:text-xl font-light leading-relaxed max-w-3xl"
           >
             {subtitle}
           </motion.p>

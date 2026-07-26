@@ -53,26 +53,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'glass-header shadow-editorial py-3 border-b border-forest-800/10 text-charcoal-900'
+            ? 'glass-header shadow-editorial py-2.5 sm:py-3 border-b border-forest-800/10 text-charcoal-900'
             : 'bg-gradient-to-b from-forest-950/95 via-forest-950/80 to-transparent py-0 text-white'
         }`}
       >
-        {/* Top Utility Bar (Desktop only, collapses on scroll) */}
+        {/* Top Utility Bar (Desktop only: hidden md:block, collapses on scroll) */}
         <div
-          className={`w-full border-b border-gold-500/20 text-xs py-2 px-6 transition-all duration-300 ${
-            isScrolled ? 'hidden' : 'block bg-forest-950/90 text-ivory-100'
+          className={`w-full border-b border-gold-500/20 text-xs py-2 px-6 sm:px-10 lg:px-16 transition-all duration-300 ${
+            isScrolled ? 'hidden' : 'hidden md:block bg-forest-950/90 text-ivory-100'
           }`}
         >
-          <div className="max-w-[1600px] w-full mx-auto flex justify-between items-center px-4 sm:px-8 lg:px-12 xl:px-16">
+          <div className="w-full flex justify-between items-center">
             <div className="flex items-center space-x-6">
               <span className="flex items-center gap-2 font-medium text-ivory-100">
                 <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
                 Admissions Open for Session {SCHOOL_INFO.admissionsSession}
               </span>
-              <span className="hidden md:inline text-gold-500/40">|</span>
-              <span className="hidden md:inline text-gold-400 font-semibold">{SCHOOL_INFO.affiliation}</span>
+              <span className="hidden lg:inline text-gold-500/40">|</span>
+              <span className="hidden lg:inline text-gold-400 font-semibold">{SCHOOL_INFO.affiliation}</span>
             </div>
-            <div className="flex items-center space-x-5 text-ivory-200">
+            <div className="flex items-center space-x-6 text-ivory-200">
               <a href={`tel:${SCHOOL_INFO.phones[0]}`} className="hover:text-gold-400 transition-colors flex items-center gap-1.5 font-medium">
                 <Phone className="w-3.5 h-3.5 text-gold-400" />
                 <span>{SCHOOL_INFO.phones[0]}</span>
@@ -86,13 +86,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
           </div>
         </div>
 
-        {/* Main Navbar Container */}
-        <div className={`max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 ${isScrolled ? '' : 'py-3'}`}>
+        {/* Main Navbar Container - Responsive Full Width */}
+        <div className={`w-full px-4 sm:px-8 lg:px-16 ${isScrolled ? '' : 'py-2.5 sm:py-3.5'}`}>
           <div className="flex items-center justify-between">
             
             {/* Logo Link to Home */}
-            <Link to="/" className="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
-              <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif font-bold text-xl border transition-all duration-300 ${
+            <Link to="/" className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none rounded-lg p-1">
+              <div className={`w-9 h-9 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center font-serif font-bold text-xl sm:text-2xl border transition-all duration-300 ${
                 isScrolled
                   ? 'bg-forest-900 text-gold-400 border-gold-500/40 shadow-sm' 
                   : 'bg-forest-900/90 text-gold-400 border-gold-500/40 shadow-md'
@@ -100,13 +100,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 P
               </div>
               <div className="flex flex-col">
-                <span className={`font-serif tracking-tight font-bold text-xl leading-none transition-colors ${
+                <span className={`font-serif tracking-tight font-bold text-lg sm:text-2xl leading-none transition-colors ${
                   isScrolled ? 'text-forest-900' : 'text-ivory-100'
                 }`}>
                   PAVNA SCHOOL
                 </span>
-                <div className="flex items-center gap-2 mt-1">
-                  <span className={`text-[10px] tracking-widest font-bold uppercase ${
+                <div className="flex items-center gap-2 mt-0.5 sm:mt-1">
+                  <span className={`text-[9px] sm:text-[11px] tracking-widest font-bold uppercase ${
                     isScrolled ? 'text-forest-700' : 'text-gold-400'
                   }`}>
                     ALIGARH • EST. 1998
@@ -116,7 +116,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm">
+            <nav className="hidden lg:flex items-center space-x-2 font-medium text-sm">
               <Link
                 to="/"
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
@@ -281,25 +281,25 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <div className="hidden lg:flex items-center space-x-3">
               <button
                 onClick={onOpenApplyModal}
-                className="relative group overflow-hidden px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-md bg-gold-500 hover:bg-gold-600 text-forest-950 flex items-center gap-2 cursor-pointer"
+                className="relative group overflow-hidden px-7 py-3 rounded-full font-bold text-sm transition-all duration-300 shadow-md bg-gold-500 hover:bg-gold-600 text-forest-950 flex items-center gap-2 cursor-pointer"
               >
                 <span>Apply Now</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
             </div>
 
-            {/* Mobile Hamburger Toggle */}
+            {/* Mobile Hamburger Toggle & Apply button */}
             <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={onOpenApplyModal}
-                className="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 mr-1 shadow-sm cursor-pointer"
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 shadow-sm cursor-pointer"
               >
                 Apply
               </button>
               
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2.5 rounded-full transition-colors focus:outline-none ${
+                className={`p-2 rounded-full transition-colors focus:outline-none ${
                   isScrolled ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
                 }`}
                 aria-label="Toggle menu"

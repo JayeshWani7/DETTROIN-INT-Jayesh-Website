@@ -13,13 +13,13 @@ export const BeyondAcademicsPage: React.FC<BeyondAcademicsPageProps> = ({ onOpen
   return (
     <div className="w-full">
       <PageHeader
-        badge="BEYOND ACADEMICS & CLUBS"
-        title="Talent Doesn’t Live Inside Textbooks."
-        subtitle="Unleash artistic expression, athletic stamina, oratorical debate, and ecological leadership across our dedicated studios and multi-sport complexes."
+        badge="BEYOND ACADEMICS & ARTS"
+        title="Where Passion Meets Performance."
+        subtitle="Unleash artistic expression, athletic stamina, oratorical debate, robotics, and ecological leadership across our dedicated studios and multi-sport complexes."
         backgroundImageUrl="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=2000&q=80"
         breadcrumbs={[{ label: 'Beyond Academics' }]}
       />
-      <BeyondAcademics />
+      <BeyondAcademics hideHeader={true} />
       <SportsMasonry />
       <CampusGallery />
       <AdmissionCTA onOpenApplyModal={onOpenApplyModal} />

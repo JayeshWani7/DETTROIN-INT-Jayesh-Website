@@ -9,7 +9,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenApplyModal }) => {
   return (
-    <section className="relative min-h-screen w-full bg-forest-950 text-ivory-100 overflow-hidden flex flex-col justify-between pt-36 pb-12 lg:pt-44">
+    <section className="relative min-h-screen w-full bg-forest-950 text-ivory-100 overflow-hidden flex flex-col justify-between pt-28 sm:pt-36 lg:pt-44 pb-12">
       {/* Background Image with Dark Emerald Gradient Overlay */}
       <div className="absolute inset-0 z-0">
         <motion.img

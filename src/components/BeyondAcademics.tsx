@@ -3,36 +3,47 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BEYOND_ACADEMICS_CATEGORIES } from '../data/schoolData';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
-export const BeyondAcademics: React.FC = () => {
+interface BeyondAcademicsProps {
+  hideHeader?: boolean;
+}
+
+export const BeyondAcademics: React.FC<BeyondAcademicsProps> = ({ hideHeader = false }) => {
   const [selectedCategory, setSelectedCategory] = useState(BEYOND_ACADEMICS_CATEGORIES[0]);
 
   return (
-    <section id="beyond-academics" className="py-24 bg-forest-950 text-ivory-100 relative overflow-hidden">
+    <section id="beyond-academics" className="py-20 bg-forest-950 text-ivory-100 relative overflow-hidden">
       
       {/* Background subtle elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-forest-800/30 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-16 space-y-3">
-          <span className="text-gold-400 text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-gold-400" />
-            CO-CURRICULAR EXPEDITIONS
-          </span>
-          <h2 className="heading-section font-serif text-ivory-100 font-normal">
-            Talent Doesn’t Live Inside Textbooks.
-          </h2>
-          <p className="text-forest-200 text-base sm:text-lg font-light">
-            Explore how Pavna students discover their artistic, analytical, and musical voices outside traditional academic boundaries.
-          </p>
-        </div>
+        {/* Header - Only render if hideHeader is false */}
+        {!hideHeader && (
+          <div className="max-w-3xl mb-16 space-y-3">
+            <span className="text-gold-400 text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-gold-400" />
+              CO-CURRICULAR EXPEDITIONS
+            </span>
+            <h2 className="heading-section font-serif text-ivory-100 font-normal">
+              Talent Doesn’t Live Inside Textbooks.
+            </h2>
+            <p className="text-forest-200 text-base sm:text-lg font-light">
+              Explore how Pavna students discover their artistic, analytical, and musical voices outside traditional academic boundaries.
+            </p>
+          </div>
+        )}
 
         {/* Desktop Interactive Layout: Category Selector on Left, Dynamic Showcase Image on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Category Selector List */}
-          <div className="lg:col-span-5 space-y-2">
+          <div className="lg:col-span-5 space-y-2.5">
+            <p className="text-xs font-bold uppercase tracking-widest text-gold-400 mb-3 flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5" />
+              EXPLORE CREATIVE & ATHLETIC CLUBS
+            </p>
+
             {BEYOND_ACADEMICS_CATEGORIES.map((cat) => {
               const isSelected = selectedCategory.id === cat.id;
               return (
@@ -40,7 +51,7 @@ export const BeyondAcademics: React.FC = () => {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat)}
                   onMouseEnter={() => setSelectedCategory(cat)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer ${
                     isSelected
                       ? 'bg-forest-900 border border-gold-500/40 text-gold-400 shadow-lg translate-x-2'
                       : 'hover:bg-forest-900/50 text-ivory-300 hover:text-ivory-100 border border-transparent'
