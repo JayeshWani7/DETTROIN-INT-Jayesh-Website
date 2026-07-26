@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
   ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail, 
-  Sparkles, BookOpen, Award, Cpu, Home, Camera, ShieldCheck, 
-  FileText, CreditCard, HelpCircle, Compass
+  BookOpen, Award, Home, Camera, Compass
 } from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
 
