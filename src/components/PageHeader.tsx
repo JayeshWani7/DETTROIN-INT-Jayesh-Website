@@ -19,7 +19,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   breadcrumbs
 }) => {
   return (
-    <section className="relative w-full bg-forest-950 text-ivory-100 overflow-hidden pt-28 sm:pt-36 lg:pt-44 pb-16 lg:pb-24 border-b border-gold-500/20">
+    <section className="relative w-full bg-forest-950 text-ivory-100 overflow-hidden pt-24 lg:pt-28 pb-14 lg:pb-20 border-b border-gold-500/20">
       {/* Background Image with Dark Emerald Overlay */}
       <div className="absolute inset-0 z-0">
         <img

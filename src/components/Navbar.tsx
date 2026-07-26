@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail } from 'lucide-react';
+import { 
+  ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail, 
+  Sparkles, BookOpen, Award, Cpu, Home, Camera, ShieldCheck, 
+  FileText, CreditCard, HelpCircle, Compass
+} from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
 
 interface NavbarProps {
@@ -11,6 +15,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileAcademicsOpen, setMobileAcademicsOpen] = useState(true);
+  const [mobileAdmissionsOpen, setMobileAdmissionsOpen] = useState(false);
+  const [mobileCampusOpen, setMobileCampusOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -340,118 +347,257 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
         </div>
       </header>
 
-      {/* Full Screen Mobile Drawer */}
+      {/* Modern Luxury Full Screen Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden bg-forest-950 text-ivory-100 flex flex-col justify-between p-6 animate-fadeIn overflow-y-auto">
+        <div className="fixed inset-0 z-50 lg:hidden bg-forest-950/98 backdrop-blur-xl text-ivory-100 flex flex-col justify-between p-5 sm:p-7 animate-fadeIn overflow-y-auto">
+          
+          {/* Drawer Header */}
           <div>
-            <div className="flex items-center justify-between border-b border-forest-800 pb-6 mb-8">
+            <div className="flex items-center justify-between border-b border-gold-500/20 pb-5 mb-6">
               <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gold-500 text-forest-950 font-serif font-bold text-xl flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-gold-500 text-forest-950 font-serif font-bold text-xl flex items-center justify-center shadow-md">
                   P
                 </div>
                 <div>
-                  <h2 className="font-serif font-bold text-xl leading-none text-white">PAVNA SCHOOL</h2>
-                  <p className="text-[10px] text-gold-400 uppercase tracking-widest mt-1">Aligarh • Est. 1998</p>
+                  <h2 className="font-serif font-bold text-xl leading-none text-ivory-100">PAVNA SCHOOL</h2>
+                  <p className="text-[10px] text-gold-400 font-bold uppercase tracking-widest mt-1">Aligarh • Est. 1998</p>
                 </div>
               </Link>
+              
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-forest-900 text-ivory-200 focus:outline-none cursor-pointer"
+                className="w-10 h-10 rounded-full bg-forest-900 border border-gold-500/30 text-gold-400 flex items-center justify-center hover:bg-gold-500 hover:text-forest-950 transition-colors focus:outline-none cursor-pointer"
+                aria-label="Close Menu"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Mobile navigation links */}
-            <nav className="space-y-4 font-serif text-2xl">
-              <Link
-                to="/"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                to="/about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                About Pavna
-              </Link>
-              <Link
-                to="/academics"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Academics & CBSE
-              </Link>
-              <Link
-                to="/beyond-academics"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Beyond Academics
-              </Link>
-              <Link
-                to="/boarding"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Residential Boarding
-              </Link>
-              <Link
-                to="/campus"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Campus & Gallery
-              </Link>
-              <Link
-                to="/infrastructure"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Infrastructure & Labs
-              </Link>
-              <Link
-                to="/cbse-disclosure"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                CBSE Disclosure
-              </Link>
-              <Link
-                to="/admissions"
-                onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
-              >
-                Admissions 2026-27
-              </Link>
+            {/* Categorized & Interactive Menu Accordions */}
+            <div className="space-y-3 font-sans">
+              
+              {/* Primary Direct Links */}
+              <div className="grid grid-cols-2 gap-2.5">
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
+                    location.pathname === '/'
+                      ? 'bg-forest-900 border-gold-500/40 text-gold-400 font-bold shadow-md'
+                      : 'bg-forest-900/60 border-forest-800 text-ivory-100 hover:bg-forest-900'
+                  }`}
+                >
+                  <Home className="w-4 h-4 text-gold-400" />
+                  <span className="text-sm font-semibold">Home</span>
+                </Link>
+
+                <Link
+                  to="/about"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-3.5 rounded-2xl border transition-all flex items-center gap-3 ${
+                    location.pathname === '/about'
+                      ? 'bg-forest-900 border-gold-500/40 text-gold-400 font-bold shadow-md'
+                      : 'bg-forest-900/60 border-forest-800 text-ivory-100 hover:bg-forest-900'
+                  }`}
+                >
+                  <Compass className="w-4 h-4 text-gold-400" />
+                  <span className="text-sm font-semibold">About Pavna</span>
+                </Link>
+              </div>
+
+              {/* 1. Academics Accordion Group */}
+              <div className="rounded-2xl border border-forest-800 bg-forest-900/50 overflow-hidden">
+                <button
+                  onClick={() => setMobileAcademicsOpen(!mobileAcademicsOpen)}
+                  className="w-full p-4 flex items-center justify-between text-left text-ivory-100 font-semibold text-base focus:outline-none cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <BookOpen className="w-4 h-4 text-gold-400" />
+                    <span>Academics & Pedagogy</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-gold-400 transition-transform ${mobileAcademicsOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {mobileAcademicsOpen && (
+                  <div className="px-4 pb-3 space-y-1.5 border-t border-forest-800/60 pt-2 bg-forest-950/40">
+                    {academicsLinks.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        to={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`block px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors ${
+                          location.pathname === item.href
+                            ? 'bg-gold-500/20 text-gold-400 font-bold'
+                            : 'text-ivory-200 hover:bg-forest-900 hover:text-white'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* 2. Campus & Infrastructure Group */}
+              <div className="rounded-2xl border border-forest-800 bg-forest-900/50 overflow-hidden">
+                <button
+                  onClick={() => setMobileCampusOpen(!mobileCampusOpen)}
+                  className="w-full p-4 flex items-center justify-between text-left text-ivory-100 font-semibold text-base focus:outline-none cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <Camera className="w-4 h-4 text-gold-400" />
+                    <span>Campus & Facilities</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-gold-400 transition-transform ${mobileCampusOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {mobileCampusOpen && (
+                  <div className="px-4 pb-3 space-y-1.5 border-t border-forest-800/60 pt-2 bg-forest-950/40">
+                    {campusLinks.map((item, idx) => (
+                      <Link
+                        key={idx}
+                        to={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`block px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors ${
+                          location.pathname === item.href
+                            ? 'bg-gold-500/20 text-gold-400 font-bold'
+                            : 'text-ivory-200 hover:bg-forest-900 hover:text-white'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* 3. Admissions Accordion Group */}
+              <div className="rounded-2xl border border-forest-800 bg-forest-900/50 overflow-hidden">
+                <button
+                  onClick={() => setMobileAdmissionsOpen(!mobileAdmissionsOpen)}
+                  className="w-full p-4 flex items-center justify-between text-left text-ivory-100 font-semibold text-base focus:outline-none cursor-pointer"
+                >
+                  <div className="flex items-center gap-3">
+                    <GraduationCap className="w-4 h-4 text-gold-400" />
+                    <span>Admissions 2026–27</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-gold-400 transition-transform ${mobileAdmissionsOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {mobileAdmissionsOpen && (
+                  <div className="px-4 pb-3 space-y-1.5 border-t border-forest-800/60 pt-2 bg-forest-950/40">
+                    {admissionsLinks.map((item, idx) => (
+                      item.action ? (
+                        <button
+                          key={idx}
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            item.action!();
+                          }}
+                          className="w-full text-left block px-3.5 py-2.5 rounded-xl text-xs font-bold text-gold-400 hover:bg-gold-500/20 transition-colors flex items-center justify-between"
+                        >
+                          <span>{item.name}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </button>
+                      ) : (
+                        <Link
+                          key={idx}
+                          to={item.href!}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`block px-3.5 py-2.5 rounded-xl text-xs font-medium transition-colors ${
+                            location.pathname === item.href
+                              ? 'bg-gold-500/20 text-gold-400 font-bold'
+                              : 'text-ivory-200 hover:bg-forest-900 hover:text-white'
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      )
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Direct Co-curricular & Boarding Links */}
+              <div className="grid grid-cols-2 gap-2.5 pt-1">
+                <Link
+                  to="/beyond-academics"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-3.5 rounded-2xl border transition-all flex items-center gap-2.5 ${
+                    location.pathname === '/beyond-academics'
+                      ? 'bg-forest-900 border-gold-500/40 text-gold-400 font-bold shadow-md'
+                      : 'bg-forest-900/60 border-forest-800 text-ivory-100 hover:bg-forest-900'
+                  }`}
+                >
+                  <Award className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                  <span className="text-xs font-semibold">Beyond Academics</span>
+                </Link>
+
+                <Link
+                  to="/boarding"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`p-3.5 rounded-2xl border transition-all flex items-center gap-2.5 ${
+                    location.pathname === '/boarding'
+                      ? 'bg-forest-900 border-gold-500/40 text-gold-400 font-bold shadow-md'
+                      : 'bg-forest-900/60 border-forest-800 text-ivory-100 hover:bg-forest-900'
+                  }`}
+                >
+                  <Home className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                  <span className="text-xs font-semibold">Boarding Life</span>
+                </Link>
+              </div>
+
+              {/* Contact Us Direct Bar */}
               <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="block text-ivory-100 hover:text-gold-400 transition-colors"
+                className={`w-full p-3.5 rounded-2xl border transition-all flex items-center justify-between ${
+                  location.pathname === '/contact'
+                    ? 'bg-forest-900 border-gold-500/40 text-gold-400 font-bold shadow-md'
+                    : 'bg-forest-900/60 border-forest-800 text-ivory-100 hover:bg-forest-900'
+                }`}
               >
-                Contact Us
+                <div className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-gold-400" />
+                  <span className="text-sm font-semibold">Contact & Campus Tour</span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-gold-400" />
               </Link>
-            </nav>
+
+            </div>
           </div>
 
-          <div className="pt-8 border-t border-forest-800 space-y-4">
+          {/* Drawer Footer Action Area */}
+          <div className="pt-5 border-t border-gold-500/20 space-y-3 mt-6">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenApplyModal();
               }}
-              className="w-full py-4 rounded-2xl bg-gold-500 text-forest-950 font-sans font-bold text-base flex items-center justify-center gap-2 shadow-lg cursor-pointer"
+              className="w-full py-3.5 rounded-2xl bg-gold-500 hover:bg-gold-600 text-forest-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg transition-colors cursor-pointer"
             >
-              <GraduationCap className="w-5 h-5" />
-              <span>Apply Online 2026–27</span>
+              <GraduationCap className="w-5 h-5 text-forest-950" />
+              <span>Apply Online — Session 2026–27</span>
             </button>
-            <div className="text-center text-xs text-forest-300">
-              <p>Agra Highway, Aligarh • {SCHOOL_INFO.phones[0]}</p>
+
+            <div className="grid grid-cols-2 gap-2 text-center text-xs">
+              <a
+                href={`tel:${SCHOOL_INFO.phones[0]}`}
+                className="py-2.5 rounded-xl bg-forest-900/80 border border-forest-800 text-ivory-200 hover:text-gold-400 flex items-center justify-center gap-1.5 transition-colors font-medium"
+              >
+                <Phone className="w-3.5 h-3.5 text-gold-400" />
+                <span>Call Us</span>
+              </a>
+              <a
+                href={`mailto:${SCHOOL_INFO.email}`}
+                className="py-2.5 rounded-xl bg-forest-900/80 border border-forest-800 text-ivory-200 hover:text-gold-400 flex items-center justify-center gap-1.5 transition-colors font-medium"
+              >
+                <Mail className="w-3.5 h-3.5 text-gold-400" />
+                <span>Email Us</span>
+              </a>
             </div>
           </div>
+
         </div>
       )}
     </>
