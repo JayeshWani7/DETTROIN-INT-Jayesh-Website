@@ -33,18 +33,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
   }, [location.pathname]);
 
   const academicsLinks = [
-    { name: 'CBSE Curriculum', href: '/academics' },
-    { name: 'Assessment & Pedagogy', href: '/academics' },
-    { name: 'Expert Faculty', href: '/academics' },
-    { name: 'AI & STEM Labs', href: '/academics' },
+    { name: 'CBSE Curriculum', href: '/academics/cbse' },
+    { name: 'Assessment & Pedagogy', href: '/academics/assessment' },
+    { name: 'Expert Faculty', href: '/academics/faculty' },
+    { name: 'AI & STEM Labs', href: '/academics/ai-robotics' },
   ];
 
   const admissionsLinks = [
-    { name: 'Admission Process', href: '/admissions' },
+    { name: 'Admission Process', href: '/admissions/process' },
     { name: 'Apply Online 2026-27', action: onOpenApplyModal },
-    { name: 'Fee Structure & Policy', href: '/admissions' },
+    { name: 'Fee Structure & Policy', href: '/admissions/fees' },
     { name: 'Enquiry & Prospectus', action: onOpenApplyModal },
-    { name: 'Frequently Asked Questions', href: '/admissions' },
+    { name: 'Frequently Asked Questions', href: '/admissions/faq' },
   ];
 
   return (
@@ -292,7 +292,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={onOpenApplyModal}
-                className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 shadow-sm cursor-pointer"
+                className="px-4 py-2 rounded-full text-xs font-bold bg-gold-500 text-forest-950 shadow-sm cursor-pointer"
               >
                 Apply
               </button>

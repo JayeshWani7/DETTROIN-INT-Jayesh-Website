@@ -11,24 +11,21 @@ export const BeyondAcademics: React.FC<BeyondAcademicsProps> = ({ hideHeader = f
   const [selectedCategory, setSelectedCategory] = useState(BEYOND_ACADEMICS_CATEGORIES[0]);
 
   return (
-    <section id="beyond-academics" className="py-20 bg-forest-950 text-ivory-100 relative overflow-hidden">
+    <section id="beyond-academics" className="py-20 bg-ivory-100 text-charcoal-900 relative overflow-hidden">
       
-      {/* Background subtle elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-forest-800/30 rounded-full filter blur-3xl pointer-events-none" />
-
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
         {/* Header - Only render if hideHeader is false */}
         {!hideHeader && (
           <div className="max-w-3xl mb-16 space-y-3">
-            <span className="text-gold-400 text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-gold-400" />
+            <span className="text-forest-700 text-xs font-semibold uppercase tracking-widest flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-gold-500" />
               CO-CURRICULAR EXPEDITIONS
             </span>
-            <h2 className="heading-section font-serif text-ivory-100 font-normal">
+            <h2 className="heading-section font-serif text-forest-900 font-normal">
               Talent Doesn’t Live Inside Textbooks.
             </h2>
-            <p className="text-forest-200 text-base sm:text-lg font-light">
+            <p className="text-charcoal-700 text-base sm:text-lg font-light">
               Explore how Pavna students discover their artistic, analytical, and musical voices outside traditional academic boundaries.
             </p>
           </div>
@@ -39,8 +36,8 @@ export const BeyondAcademics: React.FC<BeyondAcademicsProps> = ({ hideHeader = f
           
           {/* Category Selector List */}
           <div className="lg:col-span-5 space-y-2.5">
-            <p className="text-xs font-bold uppercase tracking-widest text-gold-400 mb-3 flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5" />
+            <p className="text-xs font-bold uppercase tracking-widest text-forest-800 mb-3 flex items-center gap-2">
+              <Sparkles className="w-3.5 h-3.5 text-gold-600" />
               EXPLORE CREATIVE & ATHLETIC CLUBS
             </p>
 
@@ -51,25 +48,25 @@ export const BeyondAcademics: React.FC<BeyondAcademicsProps> = ({ hideHeader = f
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat)}
                   onMouseEnter={() => setSelectedCategory(cat)}
-                  className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer ${
+                  className={`w-full text-left p-4 sm:p-5 rounded-2xl transition-all duration-300 flex items-center justify-between group cursor-pointer border ${
                     isSelected
-                      ? 'bg-forest-900 border border-gold-500/40 text-gold-400 shadow-lg translate-x-2'
-                      : 'hover:bg-forest-900/50 text-ivory-300 hover:text-ivory-100 border border-transparent'
+                      ? 'bg-forest-900 text-gold-400 border-gold-500/40 shadow-editorial translate-x-2'
+                      : 'bg-ivory-200 hover:bg-forest-50 text-charcoal-800 hover:text-forest-900 border-forest-800/10'
                   }`}
                 >
                   <div className="space-y-1">
                     <h3 className={`font-serif text-lg sm:text-xl font-normal transition-colors ${
-                      isSelected ? 'text-gold-400 font-bold' : 'text-ivory-100'
+                      isSelected ? 'text-gold-400 font-bold' : 'text-forest-900'
                     }`}>
                       {cat.title}
                     </h3>
-                    <p className="text-xs font-light text-forest-300">
+                    <p className={`text-xs font-light ${isSelected ? 'text-forest-200' : 'text-charcoal-700'}`}>
                       {cat.tagline}
                     </p>
                   </div>
 
                   <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${
-                    isSelected ? 'text-gold-400 translate-x-1' : 'text-forest-700 group-hover:text-gold-400'
+                    isSelected ? 'text-gold-400 translate-x-1' : 'text-forest-700 group-hover:text-forest-900'
                   }`} />
                 </button>
               );
@@ -78,7 +75,7 @@ export const BeyondAcademics: React.FC<BeyondAcademicsProps> = ({ hideHeader = f
 
           {/* Dynamic Image & Narrative Card Showcase */}
           <div className="lg:col-span-7">
-            <div className="relative rounded-3xl overflow-hidden border border-gold-500/30 p-2 bg-gradient-to-b from-forest-900 to-forest-950 shadow-2xl">
+            <div className="relative rounded-3xl overflow-hidden border border-forest-800/10 p-2 bg-gradient-to-b from-ivory-200 to-ivory-100 shadow-editorial-hover">
               
               <AnimatePresence mode="wait">
                 <motion.div
