@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight, GraduationCap, Phone, Mail, Sparkles } from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
 
 interface NavbarProps {
@@ -13,7 +13,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -40,59 +40,64 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
 
   return (
     <>
-      {/* Top Utility Bar (Desktop only) */}
-      <div className={`w-full bg-forest-900 text-ivory-200 text-xs py-2 px-6 transition-all duration-300 ${isScrolled ? 'hidden' : 'block'}`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center space-x-6">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
-              Admissions Open for Session {SCHOOL_INFO.admissionsSession}
-            </span>
-            <span className="hidden md:inline text-forest-300">|</span>
-            <span className="hidden md:inline text-ivory-300">{SCHOOL_INFO.affiliation}</span>
-          </div>
-          <div className="flex items-center space-x-5 text-ivory-300">
-            <a href={`tel:${SCHOOL_INFO.phones[0]}`} className="hover:text-gold-500 transition-colors flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-gold-500" />
-              <span>{SCHOOL_INFO.phones[0]}</span>
-            </a>
-            <span>•</span>
-            <a href={`mailto:${SCHOOL_INFO.email}`} className="hover:text-gold-500 transition-colors flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-gold-500" />
-              <span>{SCHOOL_INFO.email}</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Sticky Header */}
+      {/* Combined Fixed Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'glass-header shadow-editorial py-3 border-b border-forest-800/10'
-            : 'bg-gradient-to-b from-forest-950/80 via-forest-900/40 to-transparent py-5 text-white'
+            : 'bg-gradient-to-b from-forest-950/95 via-forest-950/80 to-transparent py-0 text-white'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top Utility Bar (Desktop only, collapses on scroll) */}
+        <div
+          className={`w-full border-b border-gold-500/20 text-xs py-2 px-6 transition-all duration-300 ${
+            isScrolled ? 'hidden' : 'block bg-forest-950/90 text-ivory-100'
+          }`}
+        >
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <div className="flex items-center space-x-6">
+              <span className="flex items-center gap-2 font-medium text-ivory-100">
+                <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                Admissions Open for Session {SCHOOL_INFO.admissionsSession}
+              </span>
+              <span className="hidden md:inline text-gold-500/40">|</span>
+              <span className="hidden md:inline text-gold-400 font-semibold">{SCHOOL_INFO.affiliation}</span>
+            </div>
+            <div className="flex items-center space-x-5 text-ivory-200">
+              <a href={`tel:${SCHOOL_INFO.phones[0]}`} className="hover:text-gold-400 transition-colors flex items-center gap-1.5 font-medium">
+                <Phone className="w-3.5 h-3.5 text-gold-400" />
+                <span>{SCHOOL_INFO.phones[0]}</span>
+              </a>
+              <span className="text-gold-500/40">•</span>
+              <a href={`mailto:${SCHOOL_INFO.email}`} className="hover:text-gold-400 transition-colors flex items-center gap-1.5 font-medium">
+                <Mail className="w-3.5 h-3.5 text-gold-400" />
+                <span>{SCHOOL_INFO.email}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Navbar Bar */}
+        <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ${isScrolled ? '' : 'py-3'}`}>
           <div className="flex items-center justify-between">
             
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-gold-500 rounded-lg p-1">
+            <a href="#" className="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif font-bold text-xl border transition-all duration-300 ${
                 isScrolled 
-                  ? 'bg-forest-900 text-gold-500 border-gold-500/40' 
-                  : 'bg-ivory-100/10 text-gold-500 border-gold-500/30 backdrop-blur-md'
+                  ? 'bg-forest-900 text-gold-400 border-gold-500/40 shadow-sm' 
+                  : 'bg-forest-900/90 text-gold-400 border-gold-500/40 shadow-md'
               }`}>
                 P
               </div>
               <div className="flex flex-col">
-                <span className={`font-serif tracking-tight font-bold text-xl leading-none ${
+                <span className={`font-serif tracking-tight font-bold text-xl leading-none transition-colors ${
                   isScrolled ? 'text-forest-900' : 'text-ivory-100'
                 }`}>
                   PAVNA SCHOOL
                 </span>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className={`text-[10px] tracking-widest font-semibold uppercase ${
+                <div className="flex items-center gap-2 mt-1">
+                  <span className={`text-[10px] tracking-widest font-bold uppercase ${
                     isScrolled ? 'text-forest-700' : 'text-gold-400'
                   }`}>
                     ALIGARH • EST. 1998
@@ -105,8 +110,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <nav className="hidden lg:flex items-center space-x-1 font-medium text-sm">
               <a
                 href="#about"
-                className={`px-4 py-2 rounded-full transition-colors ${
-                  isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  isScrolled 
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 About
@@ -119,8 +126,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
-                  className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors focus:outline-none ${
-                    isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                  className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
+                    isScrolled 
+                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                      : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
                   aria-expanded={activeDropdown === 'academics'}
                 >
@@ -145,8 +154,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
 
               <a
                 href="#beyond-academics"
-                className={`px-4 py-2 rounded-full transition-colors ${
-                  isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  isScrolled 
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Beyond Academics
@@ -154,8 +165,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
 
               <a
                 href="#boarding"
-                className={`px-4 py-2 rounded-full transition-colors ${
-                  isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  isScrolled 
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Boarding
@@ -163,8 +176,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
 
               <a
                 href="#gallery"
-                className={`px-4 py-2 rounded-full transition-colors ${
-                  isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                className={`px-4 py-2 rounded-full transition-colors font-semibold ${
+                  isScrolled 
+                    ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                    : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
               >
                 Campus
@@ -177,8 +192,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
-                  className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors focus:outline-none ${
-                    isScrolled ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' : 'text-ivory-200 hover:text-white hover:bg-white/10'
+                  className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
+                    isScrolled 
+                      ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50' 
+                      : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
                   aria-expanded={activeDropdown === 'admissions'}
                 >
@@ -217,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <div className="hidden lg:flex items-center space-x-3">
               <button
                 onClick={onOpenApplyModal}
-                className="relative group overflow-hidden px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 shadow-md bg-gold-500 hover:bg-gold-600 text-forest-950 flex items-center gap-2"
+                className="relative group overflow-hidden px-6 py-2.5 rounded-full font-bold text-sm transition-all duration-300 shadow-md bg-gold-500 hover:bg-gold-600 text-forest-950 flex items-center gap-2 cursor-pointer"
               >
                 <span>Apply Now</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -228,7 +245,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={onOpenApplyModal}
-                className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gold-500 text-forest-950 mr-1"
+                className="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 mr-1 shadow-sm"
               >
                 Apply
               </button>
@@ -236,7 +253,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`p-2.5 rounded-full transition-colors focus:outline-none ${
-                  isScrolled ? 'text-forest-900 hover:bg-forest-50' : 'text-white hover:bg-white/10'
+                  isScrolled ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
                 }`}
                 aria-label="Toggle menu"
               >
