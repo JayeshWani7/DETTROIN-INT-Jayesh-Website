@@ -28,8 +28,11 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
           className="w-full h-full object-cover opacity-25"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/90 to-forest-900/60" />
-        <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-forest-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-transparent to-forest-950/80" />
       </div>
+
+      {/* Decorative Gold Radial Light Ambient Glow */}
+      <div className="absolute top-1/3 right-12 w-96 h-96 bg-gold-500/10 rounded-full filter blur-3xl pointer-events-none" />
 
       <div className="max-w-[1600px] w-full mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 space-y-6">
         
@@ -54,7 +57,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest-900 border border-gold-500/30 text-gold-400 text-xs font-bold tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-forest-900/90 border border-gold-500/30 text-gold-400 text-xs font-bold tracking-widest uppercase backdrop-blur-md"
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             <span>{badge}</span>

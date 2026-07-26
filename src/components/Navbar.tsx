@@ -47,15 +47,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
     { name: 'Frequently Asked Questions', href: '/admissions' },
   ];
 
-  const isHome = location.pathname === '/';
-
   return (
     <>
       {/* Combined Fixed Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || !isHome
-            ? 'glass-header shadow-editorial py-3 border-b border-forest-800/10'
+          isScrolled
+            ? 'glass-header shadow-editorial py-3 border-b border-forest-800/10 text-charcoal-900'
             : 'bg-gradient-to-b from-forest-950/95 via-forest-950/80 to-transparent py-0 text-white'
         }`}
       >
@@ -95,7 +93,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             {/* Logo Link to Home */}
             <Link to="/" className="flex items-center gap-3 group focus:outline-none rounded-lg p-1">
               <div className={`w-10 h-10 rounded-lg flex items-center justify-center font-serif font-bold text-xl border transition-all duration-300 ${
-                isScrolled || !isHome
+                isScrolled
                   ? 'bg-forest-900 text-gold-400 border-gold-500/40 shadow-sm' 
                   : 'bg-forest-900/90 text-gold-400 border-gold-500/40 shadow-md'
               }`}>
@@ -103,13 +101,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               </div>
               <div className="flex flex-col">
                 <span className={`font-serif tracking-tight font-bold text-xl leading-none transition-colors ${
-                  isScrolled || !isHome ? 'text-forest-900' : 'text-ivory-100'
+                  isScrolled ? 'text-forest-900' : 'text-ivory-100'
                 }`}>
                   PAVNA SCHOOL
                 </span>
                 <div className="flex items-center gap-2 mt-1">
                   <span className={`text-[10px] tracking-widest font-bold uppercase ${
-                    isScrolled || !isHome ? 'text-forest-700' : 'text-gold-400'
+                    isScrolled ? 'text-forest-700' : 'text-gold-400'
                   }`}>
                     ALIGARH • EST. 1998
                   </span>
@@ -124,7 +122,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -137,7 +135,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/about'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -156,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                   className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
                     location.pathname.startsWith('/academics')
                       ? 'bg-gold-500/20 text-gold-600 font-bold'
-                      : isScrolled || !isHome
+                      : isScrolled
                       ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                       : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
@@ -185,7 +183,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/beyond-academics'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -198,7 +196,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/boarding'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -211,7 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/campus'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -230,7 +228,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                   className={`px-4 py-2 rounded-full flex items-center gap-1.5 transition-colors font-semibold focus:outline-none ${
                     location.pathname.startsWith('/admissions')
                       ? 'bg-gold-500/20 text-gold-600 font-bold'
-                      : isScrolled || !isHome
+                      : isScrolled
                       ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                       : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                   }`}
@@ -246,7 +244,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                         <button
                           key={idx}
                           onClick={item.action}
-                          className="w-full text-left block px-4 py-2.5 text-sm text-forest-900 hover:bg-gold-500/15 rounded-xl transition-colors font-semibold flex items-center justify-between"
+                          className="w-full text-left block px-4 py-2.5 text-sm text-forest-900 hover:bg-gold-500/15 rounded-xl transition-colors font-semibold flex items-center justify-between cursor-pointer"
                         >
                           <span>{item.name}</span>
                           <ArrowUpRight className="w-4 h-4 text-gold-600" />
@@ -270,7 +268,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 className={`px-4 py-2 rounded-full transition-colors font-semibold ${
                   location.pathname === '/contact'
                     ? 'bg-gold-500/20 text-gold-600 font-bold'
-                    : isScrolled || !isHome
+                    : isScrolled
                     ? 'text-charcoal-900 hover:text-forest-800 hover:bg-forest-50'
                     : 'text-ivory-100 hover:text-gold-300 hover:bg-white/10'
                 }`}
@@ -294,7 +292,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
             <div className="lg:hidden flex items-center gap-2">
               <button
                 onClick={onOpenApplyModal}
-                className="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 mr-1 shadow-sm"
+                className="px-4 py-1.5 rounded-full text-xs font-bold bg-gold-500 text-forest-950 mr-1 shadow-sm cursor-pointer"
               >
                 Apply
               </button>
@@ -302,7 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={`p-2.5 rounded-full transition-colors focus:outline-none ${
-                  isScrolled || !isHome ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
+                  isScrolled ? 'text-forest-900 hover:bg-forest-50' : 'text-ivory-100 hover:bg-white/10'
                 }`}
                 aria-label="Toggle menu"
               >
@@ -330,7 +328,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
               </Link>
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full bg-forest-900 text-ivory-200 focus:outline-none"
+                className="p-2 rounded-full bg-forest-900 text-ivory-200 focus:outline-none cursor-pointer"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -403,7 +401,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenApplyModal }) => {
                 setMobileMenuOpen(false);
                 onOpenApplyModal();
               }}
-              className="w-full py-4 rounded-2xl bg-gold-500 text-forest-950 font-sans font-bold text-base flex items-center justify-center gap-2 shadow-lg"
+              className="w-full py-4 rounded-2xl bg-gold-500 text-forest-950 font-sans font-bold text-base flex items-center justify-center gap-2 shadow-lg cursor-pointer"
             >
               <GraduationCap className="w-5 h-5" />
               <span>Apply Online 2026–27</span>
