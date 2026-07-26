@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { SportsMasonry } from '../components/SportsMasonry';
 import { AdmissionCTA } from '../components/AdmissionCTA';
-import { Cpu, BookOpen, Trophy, Home, Bus, ShieldCheck, HeartPulse, Sparkles } from 'lucide-react';
+import { Cpu, BookOpen, Trophy, Home, Bus, HeartPulse, Sparkles } from 'lucide-react';
 
 interface InfrastructurePageProps {
   onOpenApplyModal: () => void;

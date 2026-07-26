@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { AdmissionCTA } from '../components/AdmissionCTA';
 import { SCHOOL_INFO } from '../data/schoolData';
-import { FileText, ShieldCheck, Download, ExternalLink, Award, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 interface CbseDisclosurePageProps {
   onOpenApplyModal: () => void;

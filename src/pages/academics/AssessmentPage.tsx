@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { AdmissionCTA } from '../../components/AdmissionCTA';
-import { Target, CheckCircle2, Award, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface AssessmentPageProps {
   onOpenApplyModal: () => void;

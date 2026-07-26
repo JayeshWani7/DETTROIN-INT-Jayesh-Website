@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { LeadershipSection } from '../../components/LeadershipSection';
 import { AdmissionCTA } from '../../components/AdmissionCTA';
-import { Users, Award, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 interface FacultyPageProps {
   onOpenApplyModal: () => void;

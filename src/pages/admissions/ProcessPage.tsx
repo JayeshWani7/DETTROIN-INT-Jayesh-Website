@@ -2,7 +2,7 @@ import React from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { AdmissionsJourney } from '../../components/AdmissionsJourney';
 import { AdmissionCTA } from '../../components/AdmissionCTA';
-import { FileText, CheckCircle2, Calendar, Sparkles } from 'lucide-react';
+import { FileText, CheckCircle2 } from 'lucide-react';
 
 interface ProcessPageProps {
   onOpenApplyModal: () => void;

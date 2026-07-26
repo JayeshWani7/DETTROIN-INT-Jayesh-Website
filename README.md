@@ -9,10 +9,10 @@
 
 * **Full Name**: Jayesh Wani
 * **Intern ID**: `DETTROIN-INT-JAYESH`
-* **Email Address**: `jayesh.wani@example.com` *(Replace with your exact registered email)*
+* **Email Address**: `wanijayesh0@gmail.com` 
 * **GitHub Username**: [JayeshWani7](https://github.com/JayeshWani7)
 * **Selected Website**: [Pavna School, Aligarh](https://pavnaschoolaligarh.com/)
-* **Live Demo Link**: [https://jayeshwani7.github.io/DETTROIN-INT-Jayesh-Website/](https://github.com/JayeshWani7/DETTROIN-INT-Jayesh-Website)
+* **Live Demo Link**: [https://pavanschoolrevamp-hdcsbno5i-jayesh-wanis-projects.vercel.app/](https://github.com/JayeshWani7/DETTROIN-INT-Jayesh-Website)
 * **Repository**: [JayeshWani7/DETTROIN-INT-Jayesh-Website](https://github.com/JayeshWani7/DETTROIN-INT-Jayesh-Website)
 
 ---

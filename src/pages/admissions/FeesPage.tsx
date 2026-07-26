@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../../components/PageHeader';
 import { AdmissionCTA } from '../../components/AdmissionCTA';
-import { CreditCard, ShieldCheck, Sparkles, HelpCircle } from 'lucide-react';
+import { CreditCard, Sparkles } from 'lucide-react';
 
 interface FeesPageProps {
   onOpenApplyModal: () => void;

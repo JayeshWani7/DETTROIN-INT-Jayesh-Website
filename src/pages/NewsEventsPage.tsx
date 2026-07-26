@@ -1,8 +1,7 @@
 import React from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { AdmissionCTA } from '../components/AdmissionCTA';
-import { Calendar, Bell, Award, Sparkles, ArrowRight } from 'lucide-react';
-import { SCHOOL_INFO } from '../data/schoolData';
+import { Calendar, Bell, ArrowRight } from 'lucide-react';
 
 interface NewsEventsPageProps {
   onOpenApplyModal: () => void;
